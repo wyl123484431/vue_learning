@@ -4,9 +4,9 @@
       <router-link :to="{ name: 'home' }">Home</router-link> |
       <router-link v-bind:to="{ name: 'about' }">About</router-link>
     </div>
-      <router-view key="default"/>
-      <router-view key="email" name="email"/>
-      <router-view key="tel" name="tel"/>
+      <router-view />
+      <router-view name="email"/>
+      <router-view name="tel"/>
   </div>
 </template>
 <style lang="stylus">

@@ -1,4 +1,5 @@
 import Home from "@/views/Home.vue";
+
 export default [
   {
     path: "/",
@@ -36,4 +37,7 @@ export default [
       tel: () => import('@/views/tel.vue'),
     }
   },
+  {
+    path
+  }
 ];
