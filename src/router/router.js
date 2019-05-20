@@ -1,8 +1,9 @@
-import Home from "@/views/Home.vue";
+import Home from "../views/Home.vue";
 
 export default [
   {
     path: "/",
+    alias: "/home_page",
     name: "home",
     component: Home
   },
@@ -21,7 +22,8 @@ export default [
   },
   {
     path: '/parent',
-    component: () => import('@/views/parent.vue'),
+    name: 'parent',
+    component: () => import('../views/parent.vue'),
     children: [
       {
         path: 'child',
@@ -38,6 +40,7 @@ export default [
     }
   },
   {
-    path
+    path: '/main',
+    redirect: to => "/",
   }
 ];
