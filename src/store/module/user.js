@@ -1,8 +1,13 @@
 const state = {
-  //
+  userName: 'wang'
 }
 const mutations = {
-  //
+
+}
+const getters = {
+  firstLetter: (state) => {
+    return state.userName.substr(0, 1)
+  }
 }
 const action = {
   //
@@ -10,6 +15,7 @@ const action = {
 
 export default {
   state,
+  getters,
   mutations,
   action
 }

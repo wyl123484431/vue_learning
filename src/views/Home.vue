@@ -30,9 +30,10 @@ export default {
     })
   },
   beforeRouteLeave (to, from, next) {
-    const leave = confirm('你确定要离开吗')
-    if (leave) next()
-    else next(false)
+    //const leave = confirm('你确定要离开吗')
+    //if (leave) next()
+    //else next(false)
+    next()
   },
   methods: {
     handleClick (type) {

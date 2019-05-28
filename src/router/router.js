@@ -10,8 +10,8 @@ export default [
       food: route.query.food
     }),
     beforeEnter(to,from,next){
-      if (from.name === 'about') alert ('这是about页来的')
-      else alert('这不是about页来的')
+      //if (from.name === 'about') alert ('这是about页来的')
+      //else alert('这不是about页来的')
       next()
     }
   },
@@ -64,6 +64,10 @@ export default [
   {
     path: '/main',
     redirect: to => "/",
+  },
+  {
+    path: '/store',
+    component: () => import('../views/store.vue')
   },
   {
     path: '*',

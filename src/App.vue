@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'home' }">Home</router-link> |
       <router-link v-bind:to="{ name: 'about' }">About</router-link>
     </div>
-      <transition-group name="router"> //组件过度
+      <transition-group :name="routerTransition"> //组件过度
       <router-view key="default"/>
       <router-view key="email" name="email"/>
       <router-view key="tel" name="tel"/>
@@ -14,7 +14,18 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      routerTransition: ''
+    }
+  },
+    watch: {
+      '$route' (to) {
+        console.log(to.query.transitionName)
+        console.log(1111)
+        to.query && to.query.transitionName && (this.routerTransition = to.query.transitionName)
+      }
+    }
 }
 </script>
 

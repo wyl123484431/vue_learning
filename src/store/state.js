@@ -1,5 +1,5 @@
 const state = {
-  appName: 'admin',
+  appName: 'app',
   stateValue: 'abc'
 };
 export default state;
