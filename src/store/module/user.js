@@ -14,6 +14,7 @@ const action = {
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,

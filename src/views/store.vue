@@ -5,16 +5,20 @@
         <!--<a-input v-model="inputValue"/>-->
         <p>{{inputValue}} -> lastLetter is {{ inputValueLastLetter }}</p>
         <p>{{inputValue}} -> firstLetter is {{ firstLetter }}</p>
-        <p>appNameWithVersion: {{ appNameWithVersion }}</p>
+        <!--<p>appNameWithVersion: {{ appNameWithVersion }}</p>-->
        <!-- <a-show :content="inputValue"/>-->
         <p>appName: {{ appName }}</p>
         <p>userName: {{ userName }}</p>
+        <p>appVersion: {{ appVersion }}</p>
+
+        <button @click="handleChangeAppName">更改state</button>
+        <button @click="handleChangeAppVersion">更改Version</button>
     </div>
 </template>
 <script>
 import AInput from '../components/AInput'
 import AShow from '../components/AShow'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters,mapMutations } from 'vuex'
 export default {
   name: 'store',
   data () {
@@ -30,13 +34,14 @@ export default {
     //展开操作符
     ...mapState({
       appName: state => state.appName,
-      userName: state => state.user.userName
+      userName: state => state.user.userName,
+      appVersion: state => state.appVersion
     }),
     /*...mapGetters([
       'appNameWithVersion',
       'firstLetter'
     ]),*/
-    ...mapGetters('user',[
+    ...mapGetters('user', [
       'firstLetter'
     ]),
     inputValueLastLetter () {
@@ -53,8 +58,24 @@ export default {
     }*/
   },
   methods: {
+    ...mapMutations ([
+      'SET_APP_NAME'
+    ]),
     handleInput (val) {
       this.inputValue = val
+    },
+
+    handleChangeAppName () {
+      /*this.$store.commit({
+        type: 'SET_APP_NAME',
+        appName: 'newAppName'
+      })*/
+      this.SET_APP_NAME({
+        appName: "newAppName"
+      })
+    },
+    handleChangeAppVersion () {
+      this.$store.commit('SET_APP_VERSION')
     }
   }
 }
