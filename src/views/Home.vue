@@ -4,6 +4,8 @@
       <button @click="handleClick('back')">返回上一页</button>
       <button @click="handleClick('push')">跳转到parent</button>
       <button @click="handleClick('replace')">替换</button>
+      <button @click="handleClick('replace')">请求数据</button>
+
   </div>
 </template>
 
