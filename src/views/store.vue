@@ -1,8 +1,8 @@
 <template>
     <div>
-        <a-input @input="handleInput" />
+        <!--<a-input @input="handleInput" />-->
         <!--<a-input :value="inputValue" @input="handleInput" />-->
-        <!--<a-input v-model="inputValue"/>-->
+        <a-input v-model="inputValue"/>
         <p>{{inputValue}} -> lastLetter is {{ inputValueLastLetter }}</p>
         <p>{{inputValue}} -> firstLetter is {{ firstLetter }}</p>
         <!--<p>appNameWithVersion: {{ appNameWithVersion }}</p>-->
@@ -18,7 +18,7 @@
 <script>
 import AInput from '../components/AInput'
 import AShow from '../components/AShow'
-import { mapState, mapGetters,mapMutations } from 'vuex'
+import { mapState, mapGetters,mapMutations,mapActions } from 'vuex'
 export default {
   name: 'store',
   data () {
@@ -35,7 +35,8 @@ export default {
     ...mapState({
       appName: state => state.appName,
       userName: state => state.user.userName,
-      appVersion: state => state.appVersion
+      appVersion: state => state.appVersion,
+      stateValue: state => state.stateValue
     }),
     /*...mapGetters([
       'appNameWithVersion',
@@ -61,6 +62,9 @@ export default {
     ...mapMutations ([
       'SET_APP_NAME'
     ]),
+    ...mapActions ([
+      'updateAppName'
+    ]),
     handleInput (val) {
       this.inputValue = val
     },
@@ -70,12 +74,16 @@ export default {
         type: 'SET_APP_NAME',
         appName: 'newAppName'
       })*/
-      this.SET_APP_NAME({
+      /*this.SET_APP_NAME({
         appName: "newAppName"
-      })
+      })*/
+      this.updateAppName()
     },
     handleChangeAppVersion () {
       this.$store.commit('SET_APP_VERSION')
+    },
+    changUserName () {
+      this.$store.dispatch('updateAppName','123')
     }
   }
 }
